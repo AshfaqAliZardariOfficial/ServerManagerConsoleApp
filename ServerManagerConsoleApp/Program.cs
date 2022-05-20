@@ -101,7 +101,7 @@ namespace ServerManagerConsoleApp
 
             // Hash and sign the data.
             //byte[] signedData = HashAndSignBytes(bytes, _importedProvider.ExportParameters(true));
-            byte[] signedData = _importedProvider.SignData(Encoding.ASCII.GetBytes(strPayload), SHA256.Create());
+            byte[] signedData = _importedProvider.SignData(Encoding.ASCII.GetBytes(strPayload),HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
             string _signatureBase64Encode = Base64Encode(signedData);
 
             var _requestBodyPrms = new Dictionary<string, string>
